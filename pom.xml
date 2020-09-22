@@ -66,6 +66,7 @@
                     <password>root</password>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
