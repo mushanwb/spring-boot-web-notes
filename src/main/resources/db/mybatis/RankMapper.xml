@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RankMapper">
+<select id="selectRank" resultMap="rankItem">
+    select t.user_id, t.total_score, u.name
+    from
+        (select user_id, sum(SCORE) as total_score from MATCH group by user_id order by total_score desc) t
+            left join USER u on t.USER_ID = u.ID
+</select>
+
+<resultMap id="rankItem" type="com.mushanwb.github.entity.RankItem">
+    <result property="score" column="total_score"/>
+    <association property="user" javaType="com.mushanwb.github.entity.User">
+        <id property="id" column="user_id"/>
+        <result property="name" column="name"/>
+    </association>
+</resultMap>
+</mapper>
