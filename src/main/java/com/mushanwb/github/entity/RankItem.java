@@ -1,6 +1,8 @@
 package com.mushanwb.github.entity;
 
-public class RankItem {
+import java.io.Serializable;
+
+public class RankItem implements Serializable {
 
     private User user;
     private int score;
