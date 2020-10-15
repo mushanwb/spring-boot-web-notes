@@ -1,4 +1,4 @@
-package com.mushanwb.github.XmlConfiguration;
+package com.mushanwb.github.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;

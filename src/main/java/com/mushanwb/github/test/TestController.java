@@ -1,7 +1,10 @@
 package com.mushanwb.github.test;
 
+import com.mushanwb.github.entity.User;
+import com.mushanwb.github.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
@@ -11,9 +14,16 @@ import java.util.Map;
 @RestController
 public class TestController {
 
+    private UserService userService;
+
+    @Inject
+    public TestController(UserService userService) {
+        this.userService = userService;
+    }
+
     @RequestMapping("/")
-    public String index() {
-        return "Greetings from first Spring Boot!";
+    public User index() {
+        return userService.getUserByID(1);
     }
 
 
